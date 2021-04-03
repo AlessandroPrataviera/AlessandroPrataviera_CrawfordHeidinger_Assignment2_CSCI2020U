@@ -10,7 +10,7 @@ import java.util.concurrent.Executors;
 
 public class Server{
 
-    private static ArrayList<ClientHandler> clients;
+    private static ArrayList<ClientConnectionHandler> clients;
     private static final ExecutorService pool = Executors.newFixedThreadPool(4);
     private final ServerSocket server;
 
@@ -24,7 +24,7 @@ public class Server{
             System.out.println("[SERVER] Listening for connection");
             Socket client = server.accept();
             System.out.println("[SERVER] has connected to client");
-            ClientHandler clientThread = new ClientHandler(client);
+            ClientConnectionHandler clientThread = new ClientConnectionHandler(client);
             clients.add(clientThread);
             pool.execute(clientThread);
         }

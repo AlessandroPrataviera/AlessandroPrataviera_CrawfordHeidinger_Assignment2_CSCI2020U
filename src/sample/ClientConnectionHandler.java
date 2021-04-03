@@ -8,14 +8,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
-public class ClientHandler implements Runnable{
+public class ClientConnectionHandler implements Runnable{
     private final HashMap<String, File> fileHashMap;
     private Socket client;
     private boolean running;
     private final BufferedReader in;
     private final PrintWriter out;
 
-    public ClientHandler(Socket socket) throws IOException {
+    public ClientConnectionHandler(Socket socket) throws IOException {
         this.client = socket;
         in = new BufferedReader(new InputStreamReader(client.getInputStream()));
         out = new PrintWriter(client.getOutputStream(), true);
@@ -40,7 +40,7 @@ public class ClientHandler implements Runnable{
         }
     }
     
-    private void handleCommand (String command) {
+    private void handleCommand (String command) throws IOException {
         String[] separated = command.split(" ");
         switch (separated[0]) {
             case "UPLOAD":
@@ -53,7 +53,6 @@ public class ClientHandler implements Runnable{
                 dir();
                 break;
             default:
-                System.out.println("Invalid command");
                 running = false;
                 break;
         }
