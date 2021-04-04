@@ -9,24 +9,25 @@ import java.util.concurrent.Executors;
 
 
 public class Server{
-
     private static ArrayList<ClientConnectionHandler> clients;
-    private static final ExecutorService pool = Executors.newFixedThreadPool(4);
+    private static final ExecutorService pool = Executors.newFixedThreadPool(10);
     private final ServerSocket server;
 
-    public Server() throws IOException {
+    public Server() throws IOException {        // create ArrayList for clients and ServerSocket
         clients = new ArrayList<>();
         server = new ServerSocket(8080);
     }
 
-    public void run() throws IOException {
+    public void run() throws IOException {      // loop looking for connections to clients
         while (true) {
             System.out.println("[SERVER] Listening for connection");
             Socket client = server.accept();
-            System.out.println("[SERVER] has connected to client");
+            System.out.println("[SERVER] has connected to client " + client.getInetAddress().toString());
             ClientConnectionHandler clientThread = new ClientConnectionHandler(client);
             clients.add(clientThread);
-            pool.execute(clientThread);
+            clients.removeIf(socket -> !socket.isRunning());    // remove client from list if disconnected
+            pool.execute(clientThread);                         // start clients thread
+
         }
     }
 

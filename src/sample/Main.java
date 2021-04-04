@@ -18,14 +18,13 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("Assignment 2");
-        primaryStage.setScene(new Scene(root, 400, 400));
+        primaryStage.setScene(new Scene(root, 700, 600));
         primaryStage.show();
     }
 
     @Override
     public void stop() {
         try {
-            out.println("SHUTDOWN");
             in.close();
             out.close();
             socket.close();

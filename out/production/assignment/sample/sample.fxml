@@ -1,17 +1,31 @@
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ListView?>
 
-<GridPane fx:controller="sample.Controller"
-          xmlns:fx="http://javafx.com/fxml" alignment="center" vgap="10">
-    <GridPane GridPane.columnIndex="0" GridPane.rowIndex="0" vgap="10">
-        <Button onAction="#uploadFiles" fx:id="upload" text="Upload" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-        <Button onAction="#downloadFiles" fx:id="download" text="Download" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.TextArea?>
+
+<?import javafx.scene.layout.VBox?>
+<VBox fx:controller="sample.Controller" xmlns:fx="http://javafx.com/fxml">
+
+    <MenuBar>
+        <Menu text="File">
+            <Menu text="Upload" onAction="#uploadFiles"/>
+            <Menu text="Download" onAction="#downloadFiles"/>
+            <Menu text="Exit" onAction="#exit"/>
+            <Menu text="Refresh" onAction="#refresh"/>
+        </Menu>
+
+    </MenuBar>
+
+    <GridPane vgap="10" GridPane.rowIndex="1" GridPane.columnIndex="0">
+        <Text text="Client Side" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <Text text="Server Side" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+        <ListView fx:id="clientView" GridPane.rowIndex="1" GridPane.columnIndex="0" onMouseClicked="#viewClientFile" minWidth="350"/>
+        <ListView fx:id="serverView" GridPane.rowIndex="1" GridPane.columnIndex="1" onMouseClicked="#viewServerFile" minWidth="350"/>
     </GridPane>
 
-    <ListView fx:id="clientView" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
-    <ListView fx:id="serverView" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
-
-
-
-</GridPane>
+    <TextArea fx:id="textArea" maxWidth="700" minHeight="250"/>
+</VBox>

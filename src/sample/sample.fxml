@@ -1,27 +1,31 @@
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ListView?>
 
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.text.Text?>
-<GridPane fx:controller="sample.Controller"
-          xmlns:fx="http://javafx.com/fxml" alignment="center" vgap="10">
-    <MenuBar fx:id="menuBar" GridPane.rowIndex="0" GridPane.columnIndex="0" >
-        <Menu text="Options">
-            <Menu text="Upload" onAction="#uploadFiles"></Menu>
-            <Menu text="Download" onAction="#downloadFiles"></Menu>
-            <Menu text="Exit" onAction="#exit"> </Menu>
-            <Menu text="Refresh"></Menu>
+<?import javafx.scene.control.TextArea?>
+
+<?import javafx.scene.layout.VBox?>
+<VBox fx:controller="sample.Controller" xmlns:fx="http://javafx.com/fxml">
+
+    <MenuBar>
+        <Menu text="File">
+            <Menu text="Upload" onAction="#uploadFiles"/>
+            <Menu text="Download" onAction="#downloadFiles"/>
+            <Menu text="Refresh" onAction="#refresh"/>
+            <Menu text="Exit" onAction="#exit"/>
         </Menu>
+
     </MenuBar>
 
-    <Text text="Client Side" GridPane.columnIndex="0" GridPane.rowIndex="1"> </Text>
-    <Text text="Server Side" GridPane.rowIndex="1" GridPane.columnIndex="1"> </Text>
+    <GridPane vgap="10" GridPane.rowIndex="1" GridPane.columnIndex="0">
+        <Text text="Client Side" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <Text text="Server Side" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
 
-    <ListView fx:id="clientView" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
-    <ListView fx:id="serverView" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+        <ListView fx:id="clientView" GridPane.rowIndex="1" GridPane.columnIndex="0" onMouseClicked="#viewClientFile" minWidth="350"/>
+        <ListView fx:id="serverView" GridPane.rowIndex="1" GridPane.columnIndex="1" onMouseClicked="#viewServerFile" minWidth="350"/>
+    </GridPane>
 
-
-
-</GridPane>
+    <TextArea fx:id="textArea" maxWidth="700" minHeight="250"/>
+</VBox>
