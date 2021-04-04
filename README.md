@@ -35,7 +35,7 @@ Steps to use the file sharer OPTION 1:
 3. Inside the Menu Bar labelled "File" and perform the task you wish to do.
 
 Steps to use the file sharer OPTION 2:
-1. navigate to out/production/ in the terminal
+1. navigate to out/production/assignment/ in the terminal
 2. run server with command "java sample.Server"
 3. run as many clients with separate terminals with command "java sample.Main"
 
