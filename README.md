@@ -13,8 +13,9 @@ It is a Java FX application so when you run it you will have a UI created to go 
 Improvements
 -----------------------------------------------------------------------------------------------
 The Basic Improvements we made to the project itself were all visual. A menu bar was added instead of multiple buttons since it  
-would clutter the UI too much so we put them all into one place. Some of these new button were an exit button to exit out of the  
-UI and a refresh button so you can update the UI to see the files being added to server or onto your machine.
+would clutter the UI too much, so we put them all into one place. Some of these new button were an exit button to exit out of the  
+UI, and a refresh button, so you can update the UI to see the files being added to server or onto your machine. Also, a TextArea was
+added so that if you click on a file either in the server, or local repository, you can view its content.
 
 How to Run
 -----------------------------------------------------------------------------------------------
@@ -28,12 +29,15 @@ clone, and the repository website link. This will import all the code onto your 
 can open our code in the IDE and run our program however there is a certain order that it must be done in. Firstly, out server class must be run so that it can look   
 for connections and then you can run the Main class so then the client will connect to the server, and you will be able to share you files!
 
-Steps to use the spam detector:
+Steps to use the file sharer OPTION 1:
 1. Compile the code in an IDE and run in the specific order
 2. Then click on a file to be uploaded/downloaded
-3. Inside the Menu Bar labelled "Options" and perform the task you wish to do.
+3. Inside the Menu Bar labelled "File" and perform the task you wish to do.
 
-
+Steps to use the file sharer OPTION 2:
+1. navigate to out/production/ in the terminal
+2. run server with command "java sample.Server"
+3. run as many clients with separate terminals with command "java sample.Main"
 
 
 Resources
