@@ -10,7 +10,7 @@ import java.util.Objects;
 
 public class ClientConnectionHandler implements Runnable{
     private final HashMap<String, File> fileHashMap;
-    private Socket client;
+    private final Socket client;
     private boolean running;
     private final BufferedReader in;
     private final PrintWriter out;
@@ -83,7 +83,7 @@ public class ClientConnectionHandler implements Runnable{
         try {
             FileWriter writer = new FileWriter("resources/server/" + fileName);
             String line = in.readLine();
-            line = in.readLine();
+            line = line.startsWith("UPLOAD") ? in.readLine() : line;
             while (!line.equals("\\Z")) {
                 writer.write(line + '\n');
                 line = in.readLine();

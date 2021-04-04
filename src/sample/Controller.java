@@ -1,6 +1,5 @@
 package sample;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 
@@ -38,7 +37,7 @@ public class Controller {
     }
 
 
-    public void uploadFiles(ActionEvent actionEvent) throws IOException {
+    public void uploadFiles() throws IOException {
         //connect();
 
         String fileName = clientView.getSelectionModel().getSelectedItem();
@@ -54,7 +53,7 @@ public class Controller {
         //disconnect();
     }
 
-    public void downloadFiles(ActionEvent actionEvent) throws IOException {
+    public void downloadFiles() {
         //connect();
         String fileName = serverView.getSelectionModel().getSelectedItem();
         if (fileName != null) {
